@@ -28,7 +28,7 @@
             ></textarea>
             <div>
               <button
-                @click="handleSubmit"
+                type="handleSubmit"
                 id="submit-btn"
                 class="button is-primary"
               >

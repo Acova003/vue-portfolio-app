@@ -60,10 +60,17 @@ export default {
   // Methods that are used inside the App component
   methods: {
     addProject(newProject) {
-      // Give the new cat a unique ID
-      newProject.id = this.allProjects.length + 1;
-      // Add the new cat to 'allCats'
-      this.allProjects.push(newProject);
+      const regEx =
+        /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm;
+
+      if (
+        newProject.title !== "" &&
+        newProject.image !== "" &&
+        newProject.image.match(regEx) &&
+        newProject.description !== ""
+      ) {
+        this.allProjects.push(newProject);
+      }
     },
   },
 };
@@ -82,7 +89,6 @@ export default {
 #headline {
   text-align: center;
   font-size: 50px;
-  margin-bottom: 20px;
   font-family: sans-serif;
 }
 </style>
