@@ -3,11 +3,13 @@
   <section class="featured-section">
     <div id="featured-card" class="card">
       <div class="container">
-        <h1 class="title">{{ featured.title }}</h1>
         <figure class="featured-image">
           <img :src="featured.image" :alt="featured.title" />
         </figure>
-        <div class="content">{{ featured.description }}</div>
+        <div class="text-content">
+          <h1 class="title">{{ featured.title }}</h1>
+          <div class="content">{{ featured.description }}</div>
+        </div>
       </div>
     </div>
   </section>
@@ -29,7 +31,6 @@
           <div class="media">
             <div class="media-content">
               <p class="title is-4">{{ project.title }}</p>
-              <p class="subtitle is-6">{{ project.subtitle }}</p>
             </div>
           </div>
           <div class="content">
@@ -54,26 +55,42 @@ export default {
 </script>
 
 <style>
+.container {
+  display: flex;
+  align-items: center;
+}
 .featured-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 3rem; /* Add more padding to make the section bigger */
-  margin-bottom: 2rem;
-  max-width: 80%; /* You can adjust this value to make the section bigger or smaller */
+  padding: 5%;
+  max-width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.featured-image img {
-  width: auto;
-  height: auto; /* This ensures the image maintains its aspect ratio */
+.featured-image {
+  height: auto;
   max-height: 800px;
   object-fit: cover;
-  margin-left: 2rem;
-  margin-right: 2rem;
+}
+
+.featured-image,
+.text-content {
+  width: 45%;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .featured-image,
+  .text-content {
+    width: 100%;
+  }
 }
 
 #featured-card {
@@ -82,5 +99,7 @@ export default {
 .title {
   margin-top: 2rem;
   margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 </style>
